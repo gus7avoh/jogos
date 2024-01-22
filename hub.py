@@ -1,10 +1,15 @@
 from random import choice, randint
 import os
-
+def limpar_terminal():
+    os.system('cls')
+def restartGame():
+    limpar_terminal()
+    jogo = False
 sup = True
 while sup == True:
     new = True
     while new == True:
+        limpar_terminal()
         print("-="*79)
         print("LISTA DE JOGOS".center(140))
         print("\n1 - Pedra papel e tesoura ")
@@ -16,6 +21,7 @@ while sup == True:
             print("\n\033[1;31mOpçao invalida! \033[m")
             p = int(input("\n\033[1;34mDigite o numero referente ao jogo que deseja jogar: \033[m"))
         if p == 1:
+            limpar_terminal()
             print("\033[1;35m-=\033[m"*79)
             print("PEDRA PAPEL OU TESOURA".center(140))
             print("\033[1;35m-=\033[m"*79)
@@ -26,6 +32,7 @@ while sup == True:
             lista = ["pedra", "papel", "tesoura"]           
             while True:    
                 r = str(input('\nDigite a sua escolha, "pedra","papel" ou "tesoura": ')).strip().lower()
+                limpar_terminal()
                 contador += 1
                 a = choice(lista)
                 if (r in ['pedra','pe','ped'] and a == "tesoura") or (r in ['papel','pap','pa'] and a == "pedra") or (r in ['tesoura','tes','te','t'] and a == "papel"):
@@ -44,6 +51,7 @@ while sup == True:
                     break
             tabela = str(input("Quer ver a tabela de resultados? "))
             if tabela in ["s", "ss", "sim"]:
+                limpar_terminal()
                 print("="*50)
                 print(f"Numero de rodadas:".ljust(25) +f"{contador}")
                 print(f"Numero de vitorias:".ljust(25) +f"{vi}")
@@ -70,11 +78,7 @@ while sup == True:
                     sup = False
                     new = False     
         elif p == 2:
-            def limpar_terminal():
-                os.system('cls' if os.name == 'nt' else 'clear')
-            def restartGame():
-                limpar_terminal()
-                jogo = False
+            limpar_terminal()
             print("-="*79)
             print("JOGO DA FORCA".center(140))
             print("\033[1;34m0\033[m".center(150))
@@ -374,7 +378,13 @@ while sup == True:
                             print("\033[1;34mObrigado Por Jogar\033[m".center(150))
                             print("\n")
                             jogo = False
-                            JogoGeral = False  
+                            JogoGeral = False
+            pergunta = str(input("Quer jogar outro jogo? "))
+            if pergunta in ["s", "ss", "sim"]:
+                new = False
+            elif pergunta not in ["s", "ss", "sim"]:
+                sup = False
+                new = False           
         elif p == 3:
             print("\033[1;35m-=\033[m"*79)
             print("PAR OU IMPAR".center(140))
@@ -395,9 +405,11 @@ while sup == True:
                     print (f"A maquina jogou: {rand}")
                 nov = str(input("\nQuer jogar novamente? "))
                 if nov not in ["s", "ss", "sim"]:
+                    limpar_terminal()
                     break
             tabela = str(input("Quer ver a tabela? "))
             if tabela in ["s", "ss", "sim"]:
+                limpar_terminal()
                 print("="*20)
                 print(f"Vitorias: ".ljust(10)+f"{v}")
                 print(f"Derrotas: ".ljust(10)+f"{d}")
@@ -419,6 +431,7 @@ while sup == True:
                     sup = False
                     new = False
         elif p == 4:
+            limpar_terminal()
             print("\033[1;35m-=\033[m"*79)
             print("ADIVINHE UM NUMERO".center(140))
             print("\033[1;35m-=\033[m"*79)
@@ -451,12 +464,9 @@ while sup == True:
                 pergunta = str(input("Quer jogar outro jogo? "))
                 if pergunta in ["s", "ss", "sim"]:
                     new = False
-    
                 elif pergunta not in ["s", "ss", "sim"]:
                     sup = False
                     new = False
-    
-
             else:
                 pergunta = str(input("Quer jogar outro jogo? "))
                 if pergunta in ["s", "ss", "sim"]:
